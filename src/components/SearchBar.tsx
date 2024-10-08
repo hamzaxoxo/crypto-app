@@ -26,7 +26,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchText, onSearchTextChange })
 const styles = StyleSheet.create({
     container: {
         padding: 10,
-        backgroundColor: colors.bg,
+        backgroundColor: colors.blackBG,
         alignItems: 'center',
         borderRadius: 25,
         marginBottom: 15,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     },
     searchInput: {
         width: '90%',
-        backgroundColor: '#1a1a1a',
+        backgroundColor: colors.blackBG,
         color: '#fff',
         paddingVertical: 10,
         paddingHorizontal: 15,

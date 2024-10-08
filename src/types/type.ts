@@ -36,3 +36,20 @@ export interface CryptoState {
     loading: boolean;
     error?: string;
 }
+
+export interface ButtonProps {
+    onPress?: () => void;
+    title: string;
+    style?: any;
+    textStyle?: any;
+    disabled?: boolean;
+    loading?: boolean;
+}
+
+export interface CryptoItem {
+    name: string;
+    imageURL: string;
+    percent24hr: number; 
+    currentPrice: number; 
+    pnl: number; 
+}

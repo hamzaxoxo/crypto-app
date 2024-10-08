@@ -1,14 +1,12 @@
 
 export const colors = {
-  bg: '#1b1e1c',
-  primary: '#3C3D37',
-  secondary: '#f0b90b',
-  gray: '#697565',
-  feild: '#1B1B1B',
-  Text: '#546084',
-  loginTitle: '#FCD535',
-  badge: '#b15961',
-  white: '#fff',
-  inputColor: '#2a2a35', 
-  error: '#ff0000', 
+  blackBG: '#0E0F18',
+  bg: '#0e0f18',
+  white: '#ffffff',
+  buttonPrimary: '#0057ff',
+  buttonSecondary: '#1a1b24',
+  inputColor: '#F5F5F5',
+  error: '#b54856',
+  btndisabled: '#0057FF',
+  success:  '#32CC86',
 };
