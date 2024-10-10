@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableHighlight, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { TouchableHighlight, Text, StyleSheet, ActivityIndicator, View } from 'react-native';
 import { ButtonProps } from '../types/type';
 import { colors } from '../utils/colors';
 import { fonts } from '../utils/fonts';
@@ -10,12 +10,17 @@ const Button = ({ onPress, title, style, textStyle, disabled, loading }: ButtonP
             style={[styles.button, style, disabled || loading ? styles.disabled : null]}
             disabled={disabled || loading}
             onPress={onPress}
-            underlayColor={'#0057FF'}
         >
             {loading ? (
                 <ActivityIndicator size="small" color={colors.white} />
             ) : (
-                <Text style={[styles.text, textStyle]}>{title}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    {typeof title === 'string' ? (
+                        <Text style={[styles.text, textStyle]}>{title}</Text>
+                    ) : (
+                        title 
+                    )}
+                </View>
             )}
         </TouchableHighlight>
     );
@@ -28,6 +33,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: 10,
+        paddingVertical: 5, 
     },
     text: {
         color: colors.white,

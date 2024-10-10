@@ -24,8 +24,6 @@ export const ProfileScreenStyles = StyleSheet.create({
     portfolioDetails: {
         flexDirection: 'column',
         justifyContent: 'space-between',
-        marginHorizontal: 20,
-        marginTop: 10,
     },
     total: {
         color: colors.white,
@@ -39,9 +37,10 @@ export const ProfileScreenStyles = StyleSheet.create({
     },
     buttonsContainer: {
         flexDirection: 'row',
+        gap: 10,
         justifyContent: 'space-between',
-        marginHorizontal: 20,
-        marginTop: 30,
+        paddingHorizontal: 20,
+        marginTop: 20,
     },
     button: {
         fontSize: 12,

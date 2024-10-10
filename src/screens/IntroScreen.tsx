@@ -22,6 +22,7 @@ const IntroScreen = () => {
                 <Button
                     title="Sign In"
                     style={IntroScreenStyles.signInButton}
+                    onPress={() => navigation.navigate("Home" as never)}
                 />
                 <Button
                     title="Sign Up"

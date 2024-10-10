@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, StatusBar, Text, View } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,9 +8,36 @@ import CryptoItem from '../components/CryptoItem';
 import { cryptoItems } from '../lib/cryptoItems';
 import { ProfileScreenStyles } from '../styles/ProfileStyles';
 import { colors } from '../utils/colors';
+import TotalBalanceCard from '../components/TotalBalanceCard';
+import { usdFormatter } from '../services/CurrencyFormatter';
 
 const ProfileScreen = () => {
     const navigation = useNavigation();
+    const [filteredData, setFilteredData] = React.useState(cryptoItems);
+    const [totalBalance, setTotalBalance] = React.useState('0.00');
+    
+    const countingTotalBalance = () => {
+        let balance: (string | undefined)[] = []
+        cryptoItems.forEach(item => {
+            balance.push(item.currentPrice);
+        });
+
+        const sumBalance = balance.reduce((a, b) => {
+            return parseFloat(a) + parseFloat(b);
+        }, 0)
+
+        setTotalBalance(sumBalance.toFixed(2));
+
+    }
+
+    useEffect(() => {
+        countingTotalBalance();
+    }, []);
+
+    const filterDataWithHighestHoldings = () => {
+        const highestHoldings = [...cryptoItems].sort((a: any, b: any) => b.currentPrice - a.currentPrice);
+        setFilteredData(highestHoldings);
+    };
 
     return (
         <View style={ProfileScreenStyles.container}>
@@ -32,35 +59,39 @@ const ProfileScreen = () => {
                 />
             </View>
 
-            <View style={ProfileScreenStyles.portfolioDetails}>
-                <Text style={ProfileScreenStyles.total}>$14,634.06</Text>
-                <Text style={ProfileScreenStyles.pnl}>+ $248.23 (+0.35)</Text>
-            </View>
+            <TotalBalanceCard balance={usdFormatter.format(parseFloat(totalBalance))} pnlBalance={'+ $248.23 (+0.35)'} image={false} />
 
             <View style={ProfileScreenStyles.buttonsContainer}>
                 <Button
                     title='Highest holdings'
                     style={ProfileScreenStyles.button}
+                    onPress={filterDataWithHighestHoldings}
                 />
                 <Button
                     title='24 Hours'
                     style={ProfileScreenStyles.button}
                 />
             </View>
-            <FlatList
-                data={cryptoItems}
-                renderItem={({ item }) => (
-                    <CryptoItem
-                        name={item.name}
-                        currentPrice={item.currentPrice}
-                        percentChange={item.percent24hr}
-                        logoUrl={item.imageURL}
-                        pnl={item.pnl}
-                    />
-                )}
-                keyExtractor={(item) => item.imageURL}
-                onEndReachedThreshold={0.1}
-            />
+            <View style={{
+                marginTop: 40,
+                marginHorizontal: 10
+            }}>
+                <FlatList
+                    data={filteredData}
+                    renderItem={({ item }) => (
+                        <CryptoItem
+                            id={item.id}
+                            name={item.name}
+                            currentPrice={item.currentPrice}
+                            percent24hr={item.percent24hr}
+                            imageURL={item.imageURL}
+                            pnl={item.pnl}
+                            symbol={item.symbol}
+                        />
+                    )}
+                    onEndReachedThreshold={0.1}
+                />
+            </View>
         </View>
     );
 };

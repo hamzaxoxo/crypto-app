@@ -1,6 +1,7 @@
 
 import { StyleSheet } from 'react-native';
 import { colors } from '../utils/colors';
+import { fonts } from '../utils/fonts';
 export const CryptoItemStyles = StyleSheet.create({
     symboleRankContainer: {
         display: 'flex',
@@ -10,17 +11,19 @@ export const CryptoItemStyles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 15,
         marginBottom: 10,
         borderRadius: 8,
-        backgroundColor: '#1B1B1B',
+        paddingLeft: 10,
+        paddingBottom: 10,
+        paddingRight: 10,
+        // backgroundColor: '#1B1B1B',
     },
     logoContainer: {
         marginRight: 10,
     },
     logo: {
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
         borderRadius: 20,
         backgroundColor: '#FFFFFF',
     },
@@ -29,20 +32,20 @@ export const CryptoItemStyles = StyleSheet.create({
         justifyContent: 'center',
     },
     name: {
-        fontSize: 18,
-        color: '#FCD535',
-        fontFamily: 'Poppins-Regular',
+        fontSize: 15,
+        color: colors.white,
+        fontFamily: fonts.Bold,
     },
     rank: {
-        fontSize: 10,
+        fontSize: 12,
         color: '#fff',
         fontFamily: 'Poppins-Regular',
-        backgroundColor: colors.badge,
         paddingTop: 0,
         paddingBottom: 0,
-        paddingLeft: 4,
+        // paddingLeft: 4,
         paddingRight: 4,
         borderRadius: 4,
+        opacity: 0.5,
     },
     symbol: {
         fontSize: 14,
@@ -55,12 +58,12 @@ export const CryptoItemStyles = StyleSheet.create({
         alignItems: 'flex-end',
     },
     price: {
-        fontSize: 20,
-        color: '#FCD535',
-        fontFamily: 'Poppins-Regular',
+        fontSize: 16,
+        color: colors.white,
+        fontFamily: fonts.Bold,
     },
     change: {
-        fontSize: 16,
+        fontSize: 12,
         fontFamily: 'Poppins-Regular',
     },
     up: {

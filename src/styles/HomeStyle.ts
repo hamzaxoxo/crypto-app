@@ -4,7 +4,7 @@ import { colors } from "../utils/colors";
 export const HomeStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.blackBG,
+        backgroundColor: colors.bg,
         paddingHorizontal: 10,
     },
     list: {
