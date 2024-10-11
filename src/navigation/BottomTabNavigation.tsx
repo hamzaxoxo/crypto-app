@@ -2,9 +2,11 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors } from '../utils/colors';
 import Ionicons from 'react-native-vector-icons/Feather';
-import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from './TopTabNavigation';
 import ProfileScreen from '../screens/ProfileScreen';
 import { tabBarActiveTintColor, tabBarLabelStyle, tabBarStyle } from '../styles/BottomNavStyle';
+import TopTabNavigation from './TopTabNavigation';
+import TransactionsScreen from '../screens/Home/TransactionsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +21,7 @@ function BottomTabNavigator() {
                 tabBarIcon: ({ focused }) => {
                     let iconName;
                     switch (route.name) {
-                        case 'Top Assets':
+                        case 'Top_Assets':
                             iconName = 'home';
                             return <Ionicons name={iconName} size={24} color={focused ? colors.buttonPrimary : colors.inputColor} />;
                         case 'Transactions':
@@ -32,8 +34,8 @@ function BottomTabNavigator() {
                 },
             })}
         >
-            <Tab.Screen name="Top Assets" component={HomeScreen} options={{ headerShown: false }} />
-            <Tab.Screen name="Transactions" component={HomeScreen} options={{ headerShown: false }} />
+            <Tab.Screen name="Top_Assets" component={TopTabNavigation} options={{ headerShown: false }} />
+            <Tab.Screen name="Transactions" component={TransactionsScreen} options={{ headerShown: false }} />
             <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
         </Tab.Navigator>
     );

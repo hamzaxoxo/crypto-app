@@ -35,10 +35,10 @@ const data = [
 ]
 
 const DetailedScreen = ({ route, navigation }: DetailedScreenProps) => {
-    const { name, symbol } = route.params;
+    const { title, symbol } = route.params;
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: `${name} (${symbol})`,
+            title: `${title} (${symbol.toUpperCase()})`,
             headerTitleAlign: 'center',
             headerTitleStyle: {
                 fontWeight: 'bold',
@@ -49,7 +49,7 @@ const DetailedScreen = ({ route, navigation }: DetailedScreenProps) => {
             },
             headerTintColor: colors.white,
         });
-    }, [navigation, name]);
+    }, [navigation, title]);
 
 
     return (

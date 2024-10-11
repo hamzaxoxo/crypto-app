@@ -42,7 +42,6 @@ export const CryptoItemStyles = StyleSheet.create({
         fontFamily: 'Poppins-Regular',
         paddingTop: 0,
         paddingBottom: 0,
-        // paddingLeft: 4,
         paddingRight: 4,
         borderRadius: 4,
         opacity: 0.5,
@@ -67,10 +66,10 @@ export const CryptoItemStyles = StyleSheet.create({
         fontFamily: 'Poppins-Regular',
     },
     up: {
-        color: 'green',
+        color: colors.success,
     },
     down: {
-        color: 'red',
+        color: colors.error,
     },
     modalContent: {
         backgroundColor: '#fff',

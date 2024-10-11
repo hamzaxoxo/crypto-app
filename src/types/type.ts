@@ -40,7 +40,7 @@ export type RootStackParamList = {
     SignUp: undefined;
     SignIn: undefined;
     Home: undefined;
-    Detailed: { name: string, symbol: string };
+    Detailed: { title: string, symbol: string };
 };
 
 interface Quote {
@@ -83,4 +83,14 @@ export interface CryptoData {
 export interface CryptoDataForHome {
     name: string;
     // quote?: Quote;
+}
+
+export interface CardProps {
+    name: string;
+    current_price: number;
+    price_change_percentage_24h: number;
+    image: string;
+    id: string;
+    symbol: string;
+    title: string;
 }

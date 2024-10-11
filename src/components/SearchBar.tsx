@@ -2,48 +2,47 @@ import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import { colors } from '../utils/colors';
 import Feather from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/Feather';
 interface SearchBarProps {
-    searchText: string;
-    onSearchTextChange: (text: string) => void;
+    // searchText?: string;
+    // onSearchTextChange: (text: string) => void;
+    placeholder: string;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ searchText, onSearchTextChange }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ placeholder }) => {
     return (
-        <View style={styles.container}>
-            <Feather name='search' size={24} color='#888' />
+        <View style={styles.searchSection}>
+            <Feather style={styles.searchIcon} name="search" size={20} color={colors.white} />
             <TextInput
-                style={styles.searchInput}
-                placeholder="Search for crypto"
-                placeholderTextColor="#cecece"
-                value={searchText}
-                onChangeText={(text) => onSearchTextChange(text)}
-                 
+                style={styles.input}
+                placeholder={placeholder}
+                underlineColorAndroid="transparent"
+                placeholderTextColor={colors.white}
             />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        padding: 10,
-        backgroundColor: colors.blackBG,
-        alignItems: 'center',
-        borderRadius: 25,
-        marginBottom: 15,
-        marginTop: 15,
-        display: 'flex',
-        paddingLeft: 15,
+    searchSection: {
         flexDirection: 'row',
-
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.buttonSecondary,
+        padding: 5,
+        borderRadius: 50,
+        marginHorizontal: 20,
+        marginTop: 20,
+        marginBottom: 20,
     },
-    searchInput: {
-        width: '90%',
-        backgroundColor: colors.blackBG,
-        color: '#fff',
-        paddingVertical: 10,
-        paddingHorizontal: 15,
-        borderRadius: 25,
-        fontSize: 16,
+    searchIcon: {
+        padding: 10,
+    },
+    input: {
+        flex: 1,
+        padding: 0,
+        backgroundColor: colors.buttonSecondary,
+        color: colors.white
     },
 });
 
